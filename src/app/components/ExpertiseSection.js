@@ -70,18 +70,6 @@ const ALL_TOOLS = [
   { name: "Amazon S3", icon: SiAmazons3 },
 ];
 
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const handler = (e) => setReduced(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return reduced;
-}
-
 function Marquee() {
   const trackRef = useRef(null);
   const offsetRef = useRef(0);
@@ -106,6 +94,18 @@ function Marquee() {
     rafRef.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(rafRef.current);
   }, [reducedMotion]);
+
+  function usePrefersReducedMotion() {
+    const [reduced, setReduced] = useState(false);
+    useEffect(() => {
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      setReduced(mq.matches);
+      const handler = (e) => setReduced(e.matches);
+      mq.addEventListener("change", handler);
+      return () => mq.removeEventListener("change", handler);
+    }, []);
+    return reduced;
+  }
 
   const loop = [...ALL_TOOLS, ...ALL_TOOLS];
 

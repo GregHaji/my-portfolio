@@ -11,18 +11,6 @@ const NAV_ITEMS = [
 const RING_RADIUS = 14;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const handler = (e) => setReduced(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return reduced;
-}
-
 export default function Nav() {
   const [activeId, setActiveId] = useState(NAV_ITEMS[0].id);
   const [mounted, setMounted] = useState(false);
@@ -33,6 +21,18 @@ export default function Nav() {
   const menuRef = useRef(null);
   const lastYRef = useRef(0);
   const reducedMotion = usePrefersReducedMotion();
+
+  function usePrefersReducedMotion() {
+    const [reduced, setReduced] = useState(false);
+    useEffect(() => {
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      setReduced(mq.matches);
+      const handler = (e) => setReduced(e.matches);
+      mq.addEventListener("change", handler);
+      return () => mq.removeEventListener("change", handler);
+    }, []);
+    return reduced;
+  }
 
   useEffect(() => {
     setMounted(true);
