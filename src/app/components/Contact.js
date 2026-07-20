@@ -76,7 +76,7 @@ export default function Contact() {
           Contact
         </p>
         <h2 className="[font-family:Playfair_Display,ui-serif,Georgia,serif] font-normal text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] text-[#1c1b17] mb-4 max-w-lg">
-          A letter to a distant friend.
+          Write me a letter.
         </h2>
         <p className="[font-family:Playfair_Display,ui-serif,Georgia,serif] italic text-lg text-[#1c1b17]/55 mb-16 max-w-md">
           Take a moment, write what&apos;s on your mind, and it will find its
