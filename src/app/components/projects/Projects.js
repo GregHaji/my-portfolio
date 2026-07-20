@@ -29,7 +29,7 @@ function useHasHoverPointer() {
   const [hasHover, setHasHover] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    setHasHover(mq.matches);
+
     const handler = (e) => setHasHover(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -55,13 +55,13 @@ function ShojiPanel({ open, direction, index }) {
       }`}
     >
       <div className="relative w-9 h-9 flex items-center justify-center">
-        <span className="absolute w-full h-full rounded-full border border-#1c1b17/[0.08]" />
+        <span className="absolute w-full h-full rounded-full border border-[#1c1b17]/[0.08]" />
         <span className="w-1.5 h-1.5 rounded-full bg-[#2e3d5c]" />
       </div>
-      <span className="font-[Playfair_Display,ui-serif,Georgia,serif] italic text-3xl text-[#1c1b17]/25">
+      <span className="[font-family:Playfair_Display,ui-serif,Georgia,serif] italic text-3xl text-[#1c1b17]/25">
         {String(index + 1).padStart(2, "0")}
       </span>
-      <span className="font-[Jost,ui-sans-serif,system-ui] text-[10px] tracking-[0.14em] uppercase text-[#1c1b17]/35">
+      <span className="[font-family:Jost,ui-sans-serif,system-ui] text-[10px] tracking-[0.14em] uppercase text-[#1c1b17]/35">
         Hover to reveal
       </span>
     </div>
@@ -181,7 +181,7 @@ function ProjectBlock({ proj, index }) {
 
       <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-14 mt-8">
         <div className="flex md:flex-col items-center md:items-start gap-3 md:gap-4 md:w-32 shrink-0">
-          <span className="font-[Jost,ui-sans-serif,system-ui] flex items-center gap-1.5 text-[10px] tracking-[0.14em] uppercase text-[#1c1b17]/55 border border-black/10 rounded-full px-2.5 py-1">
+          <span className="[font-family:Jost,ui-sans-serif,system-ui] flex items-center gap-1.5 text-[10px] tracking-[0.14em] uppercase text-[#1c1b17]/55 border border-black/10 rounded-full px-2.5 py-1">
             <span
               className={`w-1.5 h-1.5 rounded-full bg-[#2e3d5c] ${
                 proj.status === "LIVE" ? "animate-pulse" : ""
@@ -189,22 +189,22 @@ function ProjectBlock({ proj, index }) {
             />
             {proj.status === "LIVE" ? "Live" : "In progress"}
           </span>
-          <span className="font-[Jost,ui-sans-serif,system-ui] text-[10px] tracking-[0.14em] uppercase text-[#1c1b17]/35">
+          <span className="[font-family:Jost,ui-sans-serif,system-ui] text-[10px] tracking-[0.14em] uppercase text-[#1c1b17]/35">
             {proj.year}
           </span>
         </div>
 
         <div className="flex-1 flex flex-col gap-4">
           <div>
-            <h3 className="font-[Playfair_Display,ui-serif,Georgia,serif] font-normal text-4xl md:text-5xl text-[#1c1b17] leading-none mb-1.5">
+            <h3 className="[font-family:Playfair_Display,ui-serif,Georgia,serif] font-normal text-4xl md:text-5xl text-[#1c1b17] leading-none mb-1.5">
               {proj.title}
             </h3>
-            <p className="font-[Jost,ui-sans-serif,system-ui] text-[11px] tracking-[0.14em] uppercase text-[#1c1b17]/40">
+            <p className="[font-family:Jost,ui-sans-serif,system-ui] text-[11px] tracking-[0.14em] uppercase text-[#1c1b17]/40">
               {proj.role}
             </p>
           </div>
 
-          <p className="font-[Jost,ui-sans-serif,system-ui] text-[13px] leading-relaxed text-[#1c1b17]/60 border-l border-black/10 pl-4 max-w-2xl">
+          <p className="[font-family:Jost,ui-sans-serif,system-ui] text-[13px] leading-relaxed text-[#1c1b17]/60 border-l border-black/10 pl-4 max-w-2xl">
             {proj.description}
           </p>
 
@@ -212,7 +212,7 @@ function ProjectBlock({ proj, index }) {
             {proj.stack.map((tag) => (
               <span
                 key={tag}
-                className="font-[Jost,ui-sans-serif,system-ui] text-[11px] tracking-wide text-[#1c1b17]/70 border border-black/10 rounded-full px-2.5 py-1"
+                className="[font-family:Jost,ui-sans-serif,system-ui] text-[11px] tracking-wide text-[#1c1b17]/70 border border-black/10 rounded-full px-2.5 py-1"
               >
                 {tag}
               </span>
@@ -225,7 +225,7 @@ function ProjectBlock({ proj, index }) {
                 href={proj.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-[Jost,ui-sans-serif,system-ui] group flex items-center gap-2 text-[11px] tracking-[0.1em] uppercase text-[#1c1b17] border border-black/10 hover:border-black/25 px-3.5 py-2 rounded-full transition-all duration-200"
+                className="[font-family:Jost,ui-sans-serif,system-ui] group flex items-center gap-2 text-[11px] tracking-[0.1em] uppercase text-[#1c1b17] border border-black/10 hover:border-black/25 px-3.5 py-2 rounded-full transition-all duration-200"
               >
                 Live demo
                 <svg
@@ -250,7 +250,7 @@ function ProjectBlock({ proj, index }) {
               href="https://github.com/GregHaji"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-[Jost,ui-sans-serif,system-ui] flex items-center gap-2 text-[11px] tracking-[0.1em] uppercase text-[#1c1b17]/60 hover:text-[#1c1b17] border border-black/10 hover:border-black/25 px-3.5 py-2 rounded-full transition-all duration-200"
+              className="[font-family:Jost,ui-sans-serif,system-ui] flex items-center gap-2 text-[11px] tracking-[0.1em] uppercase text-[#1c1b17]/60 hover:text-[#1c1b17] border border-black/10 hover:border-black/25 px-3.5 py-2 rounded-full transition-all duration-200"
             >
               <svg
                 width="10"
@@ -279,7 +279,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="font-[Jost,ui-sans-serif,system-ui] relative w-full bg-[#f5f2ea] py-28 px-6 sm:px-12 md:px-16 overflow-hidden"
+      className="[font-family:Jost,ui-sans-serif,system-ui] relative w-full bg-[#f5f2ea] py-28 px-6 sm:px-12 md:px-16 overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -293,12 +293,12 @@ export default function Projects() {
       <div className="relative max-w-4xl mx-auto">
         <div className="mb-20">
           <p className="text-[11px] tracking-[0.16em] uppercase text-[#1c1b17]/40 mb-4">
-            <span className="font-[Playfair_Display,ui-serif,Georgia,serif] italic text-[#2e3d5c] mr-2">
+            <span className="[font-family:Playfair_Display,ui-serif,Georgia,serif] italic text-[#2e3d5c] mr-2">
               /
             </span>
             Projects
           </p>
-          <h2 className="font-[Playfair_Display,ui-serif,Georgia,serif] font-normal text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] text-[#1c1b17]">
+          <h2 className="[font-family:Playfair_Display,ui-serif,Georgia,serif] font-normal text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] text-[#1c1b17]">
             A few things I&apos;ve built.
           </h2>
         </div>
